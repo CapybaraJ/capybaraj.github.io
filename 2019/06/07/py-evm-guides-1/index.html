@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="py-evm系列译文之1-cookbook翻译">
+<meta name="description" content="py-evm系列译文之2-Guides翻译1：构建一个使用Py-EVM的应用程序">
 <meta name="keywords" content="ethereum,py-evm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="py-evm之cookbook翻译">
-<meta property="og:url" content="http://yoursite.com/2019/06/05/py-evm-cookbook/index.html">
+<meta property="og:title" content="py-evm之Guides翻译-构建一个使用Py-EVM的应用程序">
+<meta property="og:url" content="http://yoursite.com/2019/06/07/py-evm-guides-1/index.html">
 <meta property="og:site_name" content="Capybara&#39;s md">
-<meta property="og:description" content="py-evm系列译文之1-cookbook翻译">
+<meta property="og:description" content="py-evm系列译文之2-Guides翻译1：构建一个使用Py-EVM的应用程序">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-07T09:45:13.288Z">
+<meta property="og:updated_time" content="2019-06-07T09:57:48.232Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="py-evm之cookbook翻译">
-<meta name="twitter:description" content="py-evm系列译文之1-cookbook翻译">
+<meta name="twitter:title" content="py-evm之Guides翻译-构建一个使用Py-EVM的应用程序">
+<meta name="twitter:description" content="py-evm系列译文之2-Guides翻译1：构建一个使用Py-EVM的应用程序">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>py-evm之cookbook翻译 | Capybara&#39;s md</title>
+<title>py-evm之Guides翻译-构建一个使用Py-EVM的应用程序 | Capybara&#39;s md</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -258,11 +258,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap"><article id="post-py-evm-cookbook" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-py-evm-guides-1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2019/06/05/py-evm-cookbook/" class="article-date">
-      <time datetime="2019-06-05T11:38:36.000Z" itemprop="datePublished">2019-06-05</time>
+      <a href="/2019/06/07/py-evm-guides-1/" class="article-date">
+      <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">2019-06-07</time>
 </a>
 
 
@@ -277,7 +277,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      py-evm之cookbook翻译
+      py-evm之Guides翻译-构建一个使用Py-EVM的应用程序
     </h1>
   
 
@@ -302,25 +302,48 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>py-evm系列译文，有不当之处请联系改正，原文如下：<a href="https://py-evm.readthedocs.io/en/latest/cookbook/index.html" target="_blank" rel="noopener">https://py-evm.readthedocs.io/en/latest/cookbook/index.html</a></p>
-<h1 id="食谱"><a href="#食谱" class="headerlink" title="食谱"></a>食谱</h1><p>Cookbook是一系列简单的食谱，展示了完成常见任务的良好实践。这些示例通常是简单的“我如何……”问题的简短答案，这些问题超出了简单的API描述，但也不需要完整的指南才能变得清晰。</p>
-<h2 id="使用Chain对象"><a href="#使用Chain对象" class="headerlink" title="使用Chain对象"></a>使用Chain对象</h2><p>一个”单独”的区块链是由一系列不同的虚拟机组成的，它们用于不同的块跨度，例如，以太坊主网有一个虚拟机用于块0到1150000（称为Frontier），另一个VM用于块1150000到1920000（称为Homestead）。</p>
-<p><code>Chain</code>在定义VM范围后，该对象将管理一系列fork规则。例如，要设置一个跟踪主网以太坊网络的链，直到块1920000，您可以创建此链类：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth <span class="keyword">import</span> constants, Chain</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.vm.forks.frontier <span class="keyword">import</span> FrontierVM</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.vm.forks.homestead <span class="keyword">import</span> HomesteadVM</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.chains.mainnet <span class="keyword">import</span> HOMESTEAD_MAINNET_BLOCK</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chain_class = Chain.configure(</span><br><span class="line"><span class="meta">... </span>    __name__=<span class="string">'Test Chain'</span>,</span><br><span class="line"><span class="meta">... </span>    vm_configuration=(</span><br><span class="line"><span class="meta">... </span>        (constants.GENESIS_BLOCK_NUMBER, FrontierVM),</span><br><span class="line"><span class="meta">... </span>        (HOMESTEAD_MAINNET_BLOCK, HomesteadVM),</span><br><span class="line"><span class="meta">... </span>    ),</span><br><span class="line"><span class="meta">... </span>)</span><br></pre></td></tr></table></figure>
+        <p>py-evm系列译文，有不当之处请联系改正，原文如下：<a href="https://py-evm.readthedocs.io/en/latest/guides/building_an_app_that_uses_pyevm.html" target="_blank" rel="noopener">https://py-evm.readthedocs.io/en/latest/guides/building_an_app_that_uses_pyevm.html</a></p>
+<h1 id="构建一个使用Py-EVM的应用程序"><a href="#构建一个使用Py-EVM的应用程序" class="headerlink" title="构建一个使用Py-EVM的应用程序"></a>构建一个使用Py-EVM的应用程序</h1><p>该<code>Py-EVM</code>库的主要用例之一是使开发人员能够构建想要与以太坊生态系统交互的应用程序。</p>
+<p>在本指南中，我们要构建一个非常简单的脚本，该脚本使用<code>Py-EVM</code>库创建一个带有预先资助地址的新区块链，以便通过常规<code>Py-EVM</code>API 简单地读取该地址的余额。坦率地说，这不是世界上最激动人心的应用程序，但对于更激动人心的用例，如何使用<code>Py-EVM</code>库的原则保持不变。</p>
+<h2 id="设置应用程序"><a href="#设置应用程序" class="headerlink" title="设置应用程序"></a>设置应用程序</h2><p>让我们开始设置一个新的应用程序。通常，该过程涉及大量重复的样板代码，因此不要手动完成所有操作，只需克隆包含我们想要的所有典型事物的 <a href="https://github.com/carver/ethereum-python-project-template" target="_blank" rel="noopener">以太坊Python项目模板</a>。</p>
+<p>要将其克隆到新目录中，请<code>demo-app</code>运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/carver/ethereum-python-project-template.git demo-app</span><br></pre></td></tr></table></figure>
 
-<p>然后要初始化，您可以使用内存数据库启动它：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.db.atomic <span class="keyword">import</span> AtomicDB</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.chains.mainnet <span class="keyword">import</span> MAINNET_GENESIS_HEADER</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 开始一个新的内存数据酷酷</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 初始化一个新链</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chain = chain_class.from_genesis_header(AtomicDB(), MAINNET_GENESIS_HEADER)</span><br></pre></td></tr></table></figure>
+<p>然后，切换到目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> demo-app</span><br></pre></td></tr></table></figure>
 
-<h2 id="用自定义状态创建链"><a href="#用自定义状态创建链" class="headerlink" title="用自定义状态创建链"></a>用自定义状态创建链</h2><p>虽然前面的食谱演示了如何从现有的genesis标题创建链，但我们也可以通过指定各种genesis参数以及可选的genesis状态来创建链。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth_keys <span class="keyword">import</span> keys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth <span class="keyword">import</span> constants</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.chains.mainnet <span class="keyword">import</span> MainnetChain</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.db.atomic <span class="keyword">import</span> AtomicDB</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth_utils <span class="keyword">import</span> to_wei, encode_hex</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># 给some_address加点赞助(就是往里面打钱)</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>SOME_ADDRESS = <span class="string">b'\x85\x82\xa2\x89V\xb9%\x93M\x03\xdd\xb4Xu\xe1\x8e\x85\x93\x12\xc1'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>GENESIS_STATE = &#123;</span><br><span class="line"><span class="meta">... </span>    SOME_ADDRESS: &#123;</span><br><span class="line"><span class="meta">... </span>        <span class="string">"balance"</span>: to_wei(<span class="number">10000</span>, <span class="string">'ether'</span>),</span><br><span class="line"><span class="meta">... </span>        <span class="string">"nonce"</span>: <span class="number">0</span>,</span><br><span class="line"><span class="meta">... </span>        <span class="string">"code"</span>: <span class="string">b''</span>,</span><br><span class="line"><span class="meta">... </span>        <span class="string">"storage"</span>: &#123;&#125;</span><br><span class="line"><span class="meta">... </span>    &#125;</span><br><span class="line"><span class="meta">... </span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>GENESIS_PARAMS = &#123;</span><br><span class="line"><span class="meta">... </span>    <span class="string">'parent_hash'</span>: constants.GENESIS_PARENT_HASH,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'uncles_hash'</span>: constants.EMPTY_UNCLE_HASH,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'coinbase'</span>: constants.ZERO_ADDRESS,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'transaction_root'</span>: constants.BLANK_ROOT_HASH,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'receipt_root'</span>: constants.BLANK_ROOT_HASH,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'difficulty'</span>: constants.GENESIS_DIFFICULTY,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'block_number'</span>: constants.GENESIS_BLOCK_NUMBER,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'gas_limit'</span>: constants.GENESIS_GAS_LIMIT,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'extra_data'</span>: constants.GENESIS_EXTRA_DATA,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'nonce'</span>: constants.GENESIS_NONCE</span><br><span class="line"><span class="meta">... </span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chain = MainnetChain.from_genesis(AtomicDB(), GENESIS_PARAMS, GENESIS_STATE)</span><br></pre></td></tr></table></figure>
+<h2 id="添加Py-EVM库作为依赖"><a href="#添加Py-EVM库作为依赖" class="headerlink" title="添加Py-EVM库作为依赖"></a>添加Py-EVM库作为依赖</h2><p>要添加<code>Py-EVM</code>为依赖项，请<code>setup.py</code>在应用程序的根目录中打开该文件，然后<code>install_requires</code>按如下所示更改该部分。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">install_requires=[</span><br><span class="line">    <span class="string">"eth-utils&gt;=1,&lt;2"</span>,</span><br><span class="line">    <span class="string">"py-evm==0.2.0a40"</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure>
 
-<h2 id="从帐户中获取余额"><a href="#从帐户中获取余额" class="headerlink" title="从帐户中获取余额"></a>从帐户中获取余额</h2><p>考虑到我们之前的例子，我们可以获得预付资金账户的余额如下。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>current_vm = chain.get_vm()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>state = current_vm.state</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>state.get_balance(SOME_ADDRESS)</span><br><span class="line"><span class="number">10000000000000000000000</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>！警告</p>
+<p>确保还将文件<code>setup.py</code> 的内部<code>name</code>更改为有效项目名（例如<code>demo-app</code>）或其他内容，否则获取依赖项将失败。</p>
+</blockquote>
+<p>接下来，我们需要使用<code>pip</code>包管理器来获取和安装我们的应用程序的依赖项。</p>
+<blockquote>
+<p> ！注意</p>
+<p><strong>可选：</strong>通常，保证干净的Python 3环境的最佳方法是使用 <a href="https://virtualenv.pypa.io/en/stable/" target="_blank" rel="noopener">virtualenv</a>。如果我们还没有<code>virtualenv</code>安装，我们首先需要通过pip安装它。</p>
+<figure class="highlight plain"><figcaption><span>install virtualenv```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;</span><br><span class="line">&gt; 然后，我们可以初始化一个新的虚拟环境`venv`，例如：</span><br><span class="line">&gt;</span><br><span class="line">&gt; ```virtualenv -p python3 venv</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>这将创建一个新目录<code>venv</code>，其中安装包与任何其他全局包隔离。</p>
+<p>要激活虚拟目录，我们必须source它</p>
+<figure class="highlight plain"><figcaption><span>venv/bin/activate```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;</span><br><span class="line">&gt; 要安装依赖项，请运行：</span><br><span class="line">&gt;</span><br><span class="line">&gt; ```pip install -e .[dev]</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>恭喜！我们现在准备构建我们的应用程序了！</p>
+<h2 id="编写应用程序代码"><a href="#编写应用程序代码" class="headerlink" title="编写应用程序代码"></a>编写应用程序代码</h2><p>接下来，我们将创建一个新目录<code>app</code>并在其中创建一个文件<code>main.py</code>。粘贴以下内容。</p>
+<blockquote>
+<p>！注意</p>
+<p>代码示例通常以交互式会话语法编写，该语法由以<code>&gt;&gt;&gt;</code>或开头的行指示<code>...</code>。这使我们能够针对示例运行自动测试，以确保它们在库不断发展时继续工作。当我们想要复制并粘贴示例代码以使用它时，我们需要删除这些额外的字符以获得可运行的有效Python代码。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth <span class="keyword">import</span> constants</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.chains.mainnet <span class="keyword">import</span> MainnetChain</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.db.atomic <span class="keyword">import</span> AtomicDB</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth_utils <span class="keyword">import</span> to_wei, encode_hex</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>MOCK_ADDRESS = constants.ZERO_ADDRESS</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>DEFAULT_INITIAL_BALANCE = to_wei(<span class="number">10000</span>, <span class="string">'ether'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>GENESIS_PARAMS = &#123;</span><br><span class="line"><span class="meta">... </span>    <span class="string">'parent_hash'</span>: constants.GENESIS_PARENT_HASH,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'uncles_hash'</span>: constants.EMPTY_UNCLE_HASH,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'coinbase'</span>: constants.ZERO_ADDRESS,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'transaction_root'</span>: constants.BLANK_ROOT_HASH,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'receipt_root'</span>: constants.BLANK_ROOT_HASH,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'difficulty'</span>: constants.GENESIS_DIFFICULTY,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'block_number'</span>: constants.GENESIS_BLOCK_NUMBER,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'gas_limit'</span>: constants.GENESIS_GAS_LIMIT,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'extra_data'</span>: constants.GENESIS_EXTRA_DATA,</span><br><span class="line"><span class="meta">... </span>    <span class="string">'nonce'</span>: constants.GENESIS_NONCE</span><br><span class="line"><span class="meta">... </span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>GENESIS_STATE = &#123;</span><br><span class="line"><span class="meta">... </span>    MOCK_ADDRESS: &#123;</span><br><span class="line"><span class="meta">... </span>        <span class="string">"balance"</span>: DEFAULT_INITIAL_BALANCE,</span><br><span class="line"><span class="meta">... </span>        <span class="string">"nonce"</span>: <span class="number">0</span>,</span><br><span class="line"><span class="meta">... </span>        <span class="string">"code"</span>: <span class="string">b''</span>,</span><br><span class="line"><span class="meta">... </span>        <span class="string">"storage"</span>: &#123;&#125;</span><br><span class="line"><span class="meta">... </span>    &#125;</span><br><span class="line"><span class="meta">... </span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>chain = MainnetChain.from_genesis(AtomicDB(), GENESIS_PARAMS, GENESIS_STATE)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mock_address_balance = chain.get_vm().state.get_balance(MOCK_ADDRESS)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"The balance of address &#123;&#125; is &#123;&#125; wei"</span>.format(</span><br><span class="line"><span class="meta">... </span>    encode_hex(MOCK_ADDRESS),</span><br><span class="line"><span class="meta">... </span>    mock_address_balance)</span><br><span class="line"><span class="meta">... </span>)</span><br><span class="line">The balance of address <span class="number">0x0000000000000000000000000000000000000000</span> <span class="keyword">is</span> <span class="number">10000000000000000000000</span> wei</span><br></pre></td></tr></table></figure>
 
-<h2 id="递增构建块"><a href="#递增构建块" class="headerlink" title="递增构建块"></a>递增构建块</h2><p>默认链是无状态的,因此不能保持一个提示块开放,使我们逐步构建块。然而我们可以导入 允许我们构建块的<code>MiningChain</code>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> eth.chains.base <span class="keyword">import</span> MiningChain</span><br></pre></td></tr></table></figure>
+<h2 id="运行脚本"><a href="#运行脚本" class="headerlink" title="运行脚本"></a>运行脚本</h2><p>让我们通过调用以下命令来运行脚本。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python app/main.py</span><br></pre></td></tr></table></figure>
 
-<p>请查看“ <a href="https://py-evm.readthedocs.io/en/latest/guides/understanding_the_mining_process.html" target="_blank" rel="noopener">了解挖掘过程指南</a> ”以获取演示如何使用<code>MiningChain</code>。的完整示例</p>
+<p>我们应该看到以下输出。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The balance of address <span class="number">0x0000000000000000000000000000000000000000</span> <span class="keyword">is</span> <span class="number">10000000000000000000000</span> wei</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -329,13 +352,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2019/06/05/py-evm-cookbook/">py-evm之cookbook翻译</a></p>
+        <p><span>本文标题:</span><a href="/2019/06/07/py-evm-guides-1/">py-evm之Guides翻译-构建一个使用Py-EVM的应用程序</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">CapybaraJ</a></p>
-        <p><span>发布时间:</span>2019-06-05, 19:38:36</p>
-        <p><span>最后更新:</span>2019-06-07, 17:45:13</p>
+        <p><span>发布时间:</span>2019-06-07, 17:24:00</p>
+        <p><span>最后更新:</span>2019-06-07, 17:57:48</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2019/06/05/py-evm-cookbook/" title="py-evm之cookbook翻译">http://yoursite.com/2019/06/05/py-evm-cookbook/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/06/05/py-evm-cookbook/　　作者: CapybaraJ" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/07/py-evm-guides-1/" title="py-evm之Guides翻译-构建一个使用Py-EVM的应用程序">http://yoursite.com/2019/06/07/py-evm-guides-1/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/06/07/py-evm-guides-1/　　作者: CapybaraJ" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -348,11 +371,17 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2019/06/05/createBlog/">
-                    如何创建这个博客
+                <a href="/2019/06/07/py-evm-guides-2/">
+                    py-evm之Guides翻译-架构
                 </a>
             </div>
         
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/06/07/py-evm-guides/">
+                    py-evm之Guides目录翻译
+                </a>
+            </div>
         
     </nav>
 
@@ -362,7 +391,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#食谱"><span class="toc-number">1.</span> <span class="toc-text">食谱</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Chain对象"><span class="toc-number">1.1.</span> <span class="toc-text">使用Chain对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用自定义状态创建链"><span class="toc-number">1.2.</span> <span class="toc-text">用自定义状态创建链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#从帐户中获取余额"><span class="toc-number">1.3.</span> <span class="toc-text">从帐户中获取余额</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#递增构建块"><span class="toc-number">1.4.</span> <span class="toc-text">递增构建块</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#构建一个使用Py-EVM的应用程序"><span class="toc-number">1.</span> <span class="toc-text">构建一个使用Py-EVM的应用程序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#设置应用程序"><span class="toc-number">1.1.</span> <span class="toc-text">设置应用程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#添加Py-EVM库作为依赖"><span class="toc-number">1.2.</span> <span class="toc-text">添加Py-EVM库作为依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写应用程序代码"><span class="toc-number">1.3.</span> <span class="toc-text">编写应用程序代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行脚本"><span class="toc-number">1.4.</span> <span class="toc-text">运行脚本</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -398,7 +427,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"py-evm之cookbook翻译　| Capybara's md　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"py-evm之Guides翻译-构建一个使用Py-EVM的应用程序　| Capybara's md　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -418,7 +447,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2019/06/05/createBlog/" title="上一篇: 如何创建这个博客">
+            <a href="/2019/06/07/py-evm-guides-2/" title="上一篇: py-evm之Guides翻译-架构">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -426,7 +455,9 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2019/06/07/py-evm-guides/" title="下一篇: py-evm之Guides目录翻译">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 

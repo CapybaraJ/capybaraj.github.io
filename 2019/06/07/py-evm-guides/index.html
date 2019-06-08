@@ -15,13 +15,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Capybara&#39;s md">
-<meta property="og:url" content="http://yoursite.com/tags/py-evm/index.html">
+<meta name="description" content="py-evm系列译文之2-guides目录翻译">
+<meta name="keywords" content="ethereum,py-evm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="py-evm之Guides目录翻译">
+<meta property="og:url" content="http://yoursite.com/2019/06/07/py-evm-guides/index.html">
 <meta property="og:site_name" content="Capybara&#39;s md">
+<meta property="og:description" content="py-evm系列译文之2-guides目录翻译">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-07T09:41:02.084Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capybara&#39;s md">
+<meta name="twitter:title" content="py-evm之Guides目录翻译">
+<meta name="twitter:description" content="py-evm系列译文之2-guides目录翻译">
 
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -53,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Tag: py-evm | Capybara&#39;s md</title>
+<title>py-evm之Guides目录翻译 | Capybara&#39;s md</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -63,9 +68,9 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
-        isTag: true,
+        isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
@@ -253,245 +258,211 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-py-evm-guides" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2019/06/07/py-evm-guides/" class="article-date">
+      <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">2019-06-07</time>
+</a>
+
+
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      py-evm之Guides目录翻译
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/py-evm/">py-evm</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/06/08/py-evm-guides-4/" class="archive-article-date">
-      <time datetime="2019-06-08T10:20:00.000Z" itemprop="datePublished">06-08</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/08/py-evm-guides-4/">py-evm之Guides翻译-创建操作码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
+    <div class="article-entry" itemprop="articleBody">
+      
           
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+        <p>py-evm系列译文，有不当之处请联系改正，原文如下：<a href="https://py-evm.readthedocs.io/en/latest/guides/index.html" target="_blank" rel="noopener">https://py-evm.readthedocs.io/en/latest/guides/index.html</a></p>
+<h1 id="指南"><a href="#指南" class="headerlink" title="指南"></a>指南</h1><p>本节旨在提供实践指南，演示如何使用Py-EVM。如果您正在寻找详细的API描述，请查看<a href="https://py-evm.readthedocs.io/en/latest/api/index.html" target="_blank" rel="noopener">API部分</a>。</p>
+<ul>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/quickstart.html" target="_blank" rel="noopener">快速开始</a><ul>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/quickstart.html#installation" target="_blank" rel="noopener">安装</a></li>
+</ul>
+</li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/building_an_app_that_uses_pyevm.html" target="_blank" rel="noopener">构建一个使用Py-EVM的应用程序</a><ul>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/building_an_app_that_uses_pyevm.html#setting-up-the-application" target="_blank" rel="noopener">设置应用程序</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/building_an_app_that_uses_pyevm.html#add-the-py-evm-library-as-a-dependency" target="_blank" rel="noopener">添加Py-EVM库作为依赖项</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/building_an_app_that_uses_pyevm.html#writing-the-application-code" target="_blank" rel="noopener">编写应用程序代码</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/building_an_app_that_uses_pyevm.html#runing-the-script" target="_blank" rel="noopener">运行脚本</a></li>
+</ul>
+</li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/architecture.html" target="_blank" rel="noopener">结构</a><ul>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/architecture.html#the-chain" target="_blank" rel="noopener">连锁，链条</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/architecture.html#the-vm" target="_blank" rel="noopener">VM</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/architecture.html#the-vmstate" target="_blank" rel="noopener">VMState</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/architecture.html#the-message" target="_blank" rel="noopener">消息</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/architecture.html#the-computation" target="_blank" rel="noopener">计算</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/architecture.html#the-opcode" target="_blank" rel="noopener">操作码</a></li>
+</ul>
+</li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/understanding_the_mining_process.html" target="_blank" rel="noopener">了解采矿过程</a><ul>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/understanding_the_mining_process.html#mining" target="_blank" rel="noopener">矿业</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/understanding_the_mining_process.html#mining-an-empty-block" target="_blank" rel="noopener">挖空块</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/understanding_the_mining_process.html#retrieving-a-valid-nonce-and-mix-hash" target="_blank" rel="noopener">检索有效的nonce并混合哈希</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/understanding_the_mining_process.html#mining-a-block-with-transactions" target="_blank" rel="noopener">使用事务挖掘块</a></li>
+</ul>
+</li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/creating_opcodes.html" target="_blank" rel="noopener">创建操作码</a><ul>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/creating_opcodes.html#the-as-opcode-helper" target="_blank" rel="noopener"><code>as_opcode()</code>助手</a></li>
+<li><a href="https://py-evm.readthedocs.io/en/latest/guides/creating_opcodes.html#opcodes-as-classes" target="_blank" rel="noopener">操作码为类</a></li>
+</ul>
+</li>
+</ul>
+
+      
     </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/py-evm/">py-evm</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/06/07/py-evm-guides/">py-evm之Guides目录翻译</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">CapybaraJ</a></p>
+        <p><span>发布时间:</span>2019-06-07, 17:24:00</p>
+        <p><span>最后更新:</span>2019-06-07, 17:41:02</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/07/py-evm-guides/" title="py-evm之Guides目录翻译">http://yoursite.com/2019/06/07/py-evm-guides/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/06/07/py-evm-guides/　　作者: CapybaraJ" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2019/06/07/py-evm-guides-1/">
+                    py-evm之Guides翻译-构建一个使用Py-EVM的应用程序
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/06/05/writeBlog/">
+                    如何在hexo博客上创建文章
+                </a>
+            </div>
+        
+    </nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/06/07/py-evm-guides-3/" class="archive-article-date">
-      <time datetime="2019-06-07T09:58:00.000Z" itemprop="datePublished">06-07</time>
-</a>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#指南"><span class="toc-number">1.</span> <span class="toc-text">指南</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
         </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides-3/">py-evm之Guides翻译-理解挖矿过程</a>
-    </h1>
-  
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"py-evm之Guides目录翻译　| Capybara's md　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
 
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2019/06/07/py-evm-guides-1/" title="上一篇: py-evm之Guides翻译-构建一个使用Py-EVM的应用程序">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/06/05/writeBlog/" title="下一篇: 如何在hexo博客上创建文章">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
     </div>
 
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/py-evm/">py-evm</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/06/07/py-evm-guides-2/" class="archive-article-date">
-      <time datetime="2019-06-07T09:58:00.000Z" itemprop="datePublished">06-07</time>
-</a>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/py-evm-guides-4/">py-evm之Guides翻译-创建操作码</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/py-evm-guides-3/">py-evm之Guides翻译-理解挖矿过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/py-evm-guides-2/">py-evm之Guides翻译-架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/py-evm-guides-1/">py-evm之Guides翻译-构建一个使用Py-EVM的应用程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/py-evm-guides/">py-evm之Guides目录翻译</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/writeBlog/">如何在hexo博客上创建文章</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/createBlog/">如何创建这个博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/py-evm-cookbook/">py-evm之cookbook翻译</a></li></ul>
 
 
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides-2/">py-evm之Guides翻译-架构</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
-    </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/py-evm/">py-evm</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/06/07/py-evm-guides-1/" class="archive-article-date">
-      <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">06-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides-1/">py-evm之Guides翻译-构建一个使用Py-EVM的应用程序</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/py-evm/">py-evm</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/06/07/py-evm-guides/" class="archive-article-date">
-      <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">06-07</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides/">py-evm之Guides目录翻译</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/py-evm/">py-evm</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2019/06/05/py-evm-cookbook/" class="archive-article-date">
-      <time datetime="2019-06-05T11:38:36.000Z" itemprop="datePublished">06-05</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/py-evm-cookbook/">py-evm之cookbook翻译</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/翻译/">翻译</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/py-evm/">py-evm</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
