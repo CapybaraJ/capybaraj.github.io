@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="author" content="CapybaraJ">
+
+
+
+<meta name="description" content="在geth下的以太坊私链搭建与配置，并在其上布置智能合约，模仿节点与节点间的通信">
+<meta name="keywords" content="ethereum,geth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以太坊私链搭建与配置">
+<meta property="og:url" content="http://yoursite.com/2019/06/12/geth-privatechain/index.html">
+<meta property="og:site_name" content="Capybara&#39;s Blog">
+<meta property="og:description" content="在geth下的以太坊私链搭建与配置，并在其上布置智能合约，模仿节点与节点间的通信">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-13T13:43:24.838Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="以太坊私链搭建与配置">
+<meta name="twitter:description" content="在geth下的以太坊私链搭建与配置，并在其上布置智能合约，模仿节点与节点间的通信">
+
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Capybara&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>以太坊私链搭建与配置 | Capybara&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head></html>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">CapybaraJ</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="/pjinger96@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" href="/CapybaraJ" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="/CapybaraJ" title="简书"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geth/">geth</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go-ethereum/">go-ethereum</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/py-evm/">py-evm</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">be a simple capy</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">CapybaraJ</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">CapybaraJ</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="/pjinger96@gmail.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="/CapybaraJ" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="/CapybaraJ" title="简书"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我">
+</nav>
+      <div class="body-wrap"><article id="post-geth-privatechain" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/06/12/geth-privatechain/" class="article-date">
+      <time datetime="2019-06-12T08:41:14.000Z" itemprop="datePublished">2019-06-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      以太坊私链搭建与配置
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/geth/">geth</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>参考资料：<a href="https://g2ex.github.io/2017/09/12/ethereum-guidance/" target="_blank" rel="noopener">https://g2ex.github.io/2017/09/12/ethereum-guidance/</a></p>
+<p>这不是重复写，这是我的个人记录，很多操作参考了这篇文章与其他的，主要是为了给自己一条特别适合自己工作环境的私链。</p>
+<h2 id="关于环境"><a href="#关于环境" class="headerlink" title="关于环境"></a>关于环境</h2><p>用的geth，安装啥的我觉得不用多说了，资料太多</p>
+<h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><h3 id="创世区块"><a href="#创世区块" class="headerlink" title="创世区块"></a>创世区块</h3><p>在非go目录下，新建一个，比如我在<code>~/PersonWork/bychain</code>，目录下来一个gensis.json，创世区块！</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"config"</span>: &#123;</span><br><span class="line">    "chainID": 452, //最好不要是1，1是以太坊主链的，不要混淆了吧</span><br><span class="line">    "homesteadBlock": 0,</span><br><span class="line">    "eip155Block": 0,</span><br><span class="line">    "eip158Block": 0</span><br><span class="line">  &#125;,</span><br><span class="line">  "alloc": &#123;&#125;, //可以初始化账户，但是觉得没必要</span><br><span class="line">  "coinbase": "0x0000000000000000000000000000000000000000", //默认收钱账户，就是默认矿工账户</span><br><span class="line">  "difficulty": "0x400", //区块挖掘难度</span><br><span class="line">  "extraData": "0x", //不能是0x0，会报错，就是0x，不是我写错了</span><br><span class="line">  "gasLimit": "0x2fefd8", //gas limit</span><br><span class="line">  "nonce": "0xdeadbeefdeadbeaf",</span><br><span class="line">  "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",</span><br><span class="line">  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",</span><br><span class="line">  "timestamp": "0x00"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始化命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --datadir data0 init genesis.json</span><br></pre></td></tr></table></figure>
+
+<p>命令的主体是 <code>geth init</code>，表示初始化区块链，命令可以带有选项和参数，其中 <code>--datadir</code> 选项后面跟一个目录名，这里为 data0，表示指定数据存放目录为 data0，genesis.json 是 <code>init</code> 命令的参数。初始化完成data0里面就会有初始化数据</p>
+<h3 id="私有链网络"><a href="#私有链网络" class="headerlink" title="私有链网络"></a>私有链网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点1</span></span><br><span class="line">geth --identity <span class="string">"TestNode0"</span> --rpc --rpcport <span class="string">"8545"</span> --datadir data0 --port <span class="string">"30303"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点2</span></span><br><span class="line">geth --datadir data1 init gensis.json</span><br><span class="line">geth --identity <span class="string">"TestNode1"</span> --rpc --rpcport <span class="string">"8546"</span> --datadir data1 --port <span class="string">"30304"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点连接</span></span><br><span class="line"><span class="comment">#节点2</span></span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line"><span class="string">"enode://略去数据@127.0.0.1:23332?discport=0"</span></span><br><span class="line"><span class="comment">#节点1</span></span><br><span class="line">&gt; net.peerCount</span><br><span class="line">0</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:23332?discport=0"</span>)</span><br><span class="line">&gt; net.peerCount</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>上面命令的主体是 <code>geth console</code>，表示启动节点并进入交互式控制台。<br>各选项含义如下：</p>
+<ul>
+<li>–identity：指定节点 ID；</li>
+<li>–rpc：表示开启 HTTP-RPC 服务；</li>
+<li>–rpcport：指定 HTTP-RPC 服务监听端口号（默认为 8545）；</li>
+<li>–datadir：指定区块链数据的存储位置；</li>
+<li>–port：指定和其他节点连接所用的端口号（默认为 30303）；</li>
+<li>–nodiscover：关闭节点发现机制，防止加入有同样初始配置的陌生节点。</li>
+</ul>
+<p>一个节点可以有多个账户，默认0账户收钱(就上面定义的)，每次生成一个account，这个节点下面就会在文件夹keystone下生成一个文件，钥匙文件</p>
+<blockquote>
+<p>钥匙文件</p>
+<p>每个账户都由一对钥匙定义，一个私钥和一个公钥。 账户以地址为索引，地址由公钥衍生而来，取公钥的最后 20个字节。每对私钥 /地址都编码在一个钥匙文件里。钥匙文件是JSON文本文件，可以用任何文本编辑器打开和浏览。钥匙文件的关键部分，账户私钥，通常用你创建帐户时设置的密码进行加密。钥匙文件可以在以太坊节点数据目录的keystore子目录下找到。</p>
+<p><em>source:  <a href="https://blog.csdn.net/wzygis/article/details/73480112" target="_blank" rel="noopener">https://blog.csdn.net/wzygis/article/details/73480112</a></em></p>
+</blockquote>
+<p>一旦进入console了，这是一个交互式的 JavaScript 执行环境，在这里面可以执行 JavaScript 代码，其中 <code>&gt;</code> 是命令提示符。在这个环境里也内置了一些用来操作以太坊的 JavaScript 对象，可以直接使用这些对象。这些对象主要包括：</p>
+<ul>
+<li>eth：包含一些跟操作区块链相关的方法；</li>
+<li>net：包含一些查看p2p网络状态的方法；</li>
+<li>admin：包含一些与管理节点相关的方法；</li>
+<li>miner：包含启动&amp;停止挖矿的一些方法；</li>
+<li>personal：主要包含一些管理账户的方法；</li>
+<li>txpool：包含一些查看交易内存池的方法；</li>
+<li>web3：包含了以上对象，还包含一些单位换算的方法。</li>
+</ul>
+<p>常用命令有，后面希望有更详细的一些：</p>
+<ul>
+<li>personal.newAccount()：创建账户；</li>
+<li>personal.unlockAccount()：解锁账户；</li>
+<li>eth.accounts：枚举系统中的账户；</li>
+<li>eth.getBalance()：查看账户余额，返回值的单位是 Wei（Wei 是以太坊中最小货币面额单位，类似比特币中的<code>聪</code>，1 ether = 10^18 Wei）；</li>
+<li>eth.blockNumber：列出区块总数；</li>
+<li>eth.getTransaction(交易hash)：获取交易；</li>
+<li>eth.getBlock()：获取区块；</li>
+<li>miner.start()：开始挖矿；</li>
+<li>miner.stop()：停止挖矿；</li>
+<li>web3.fromWei()：Wei 换算成以太币；</li>
+<li>web3.toWei()：以太币换算成 Wei；</li>
+<li>txpool.status：交易池中的状态；</li>
+<li>admin.addPeer()：连接到其他节点；</li>
+</ul>
+<p>这些命令支持 <code>Tab</code> 键自动补全</p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><blockquote>
+<p>admin.addPeer()</p>
+</blockquote>
+<p>连接节点，两个节点要要指定相同的 chainID</p>
+<blockquote>
+<p>admin.nodeInfo.enode</p>
+</blockquote>
+<p>知道节点信息</p>
+<blockquote>
+<p>admin.peers</p>
+</blockquote>
+<p>可以查看连接到的其他节点信息，</p>
+<blockquote>
+<p>net.peerCount</p>
+</blockquote>
+<p>可以查看已连接到的节点数量。</p>
+<h3 id="账户"><a href="#账户" class="headerlink" title="账户"></a>账户</h3><blockquote>
+<p>personal.newAccount()</p>
+</blockquote>
+<p>创建账户，输入两遍密码即可；可以创建好多个，按照创建顺序，0，1，2，…账户，用<code>eth.accounts</code>可以枚举有多少，以及地址是啥</p>
+<blockquote>
+<p>eth.accounts()</p>
+</blockquote>
+<p>枚举该节点的所有账户，[“0x嘻嘻嘻嘻嘻嘻嘻”,”0x发发发发发”]</p>
+<blockquote>
+<p>eth.getBalance(eth.accounts[0])</p>
+</blockquote>
+<p>查看账户余额，可以单位换算以下，见下</p>
+<blockquote>
+<p>web3.fromWei(eth.getBalance(eth.accounts[1]),’ether’)</p>
+</blockquote>
+<p>以Wei为单位查看余额</p>
+<blockquote>
+<p>personal.unlockAccount(eth.accounts[0])</p>
+</blockquote>
+<p>解锁账户，转账挖矿都需要解锁账户，如果解锁账户碰到这个问题”error-account-unlock-with-http-access-is-forbidden”，在启动geth console的时候可以加上参数”<strong>–allow-insecure-unlock</strong>“</p>
+<p><a href="https://ethereum.stackexchange.com/questions/69435/error-account-unlock-with-http-access-is-forbidden-when-unlock-an-account-in-ge" target="_blank" rel="noopener">https://ethereum.stackexchange.com/questions/69435/error-account-unlock-with-http-access-is-forbidden-when-unlock-an-account-in-ge</a></p>
+<h3 id="挖矿"><a href="#挖矿" class="headerlink" title="挖矿"></a>挖矿</h3><blockquote>
+<p>miner.start(1)</p>
+</blockquote>
+<p>其中 start 的参数表示挖矿使用的线程数。第一次启动挖矿会先生成挖矿所需的 DAG 文件，这个过程有点慢，等进度达到 100% 后，就会开始挖矿，此时屏幕会被挖矿信息刷屏。</p>
+<blockquote>
+<p>miner.stop()</p>
+</blockquote>
+<p>不解释</p>
+<blockquote>
+<p>miner.start(1);admin.sleepBlocks(1);miner.stop();</p>
+</blockquote>
+<p>一次只挖一个块</p>
+<h3 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h3><blockquote>
+<p>eth.blockNumber</p>
+</blockquote>
+<p>区块数量</p>
+<blockquote>
+<p>eth.getBlock( i )</p>
+</blockquote>
+<p>查看区块i的信息</p>
+<h3 id="交易"><a href="#交易" class="headerlink" title="交易"></a>交易</h3><blockquote>
+<p>eth.sendTransaction({from:eth.accounts[0],to:eth.accounts[1],value:amount})</p>
+</blockquote>
+<p>发送交易，这是一个简单的转账交易，后面有合约创建和合约交互</p>
+<blockquote>
+<p>eth.getBlock(“pending”, true).transactions</p>
+</blockquote>
+<p>查看当前待确认交易</p>
+<blockquote>
+<p>eth.getTransaction(“0x交易hash”)</p>
+</blockquote>
+<h3 id="单位换算"><a href="#单位换算" class="headerlink" title="单位换算"></a>单位换算</h3><blockquote>
+<p>web3.toWei(5,’ether’)</p>
+</blockquote>
+<h2 id="私有链环境"><a href="#私有链环境" class="headerlink" title="私有链环境"></a>私有链环境</h2><h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><p>三个节点，两个节点交互，一个挖矿，发布一个智能合约，并可以调用</p>
+<h3 id="三个节点"><a href="#三个节点" class="headerlink" title="三个节点"></a>三个节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点1</span></span><br><span class="line">geth --identity <span class="string">"TestNode0"</span> --rpc --rpcport <span class="string">"8545"</span> --datadir d0 --port <span class="string">"30303"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line">&gt; personal.newAccount()</span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line"><span class="comment"># 节点2、3创建后执行</span></span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30304?discport=0"</span>)</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30305?discport=0"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点2</span></span><br><span class="line">geth --identity <span class="string">"TestNode1"</span> --rpc --rpcport <span class="string">"8546"</span> --datadir d1 --port <span class="string">"23332"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line">&gt; personal.newAccount()</span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30303?discport=0"</span>)</span><br><span class="line"><span class="comment"># 节点3创建后</span></span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:23333?discport=0"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点3</span></span><br><span class="line">geth --identity <span class="string">"TestNode2"</span> --rpc --rpcport <span class="string">"8547"</span> --datadir d2 --port <span class="string">"30305"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line">&gt; personal.newAccount()</span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30303?discport=0"</span>)</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30304?discport=0"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="一个智能合约发布"><a href="#一个智能合约发布" class="headerlink" title="一个智能合约发布"></a>一个智能合约发布</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点1</span></span><br><span class="line">&gt; personal.unlockAccount(eth.account[0])</span><br><span class="line"></span><br><span class="line">&gt; code=<span class="string">"0x---"</span> <span class="comment">#bin数据</span></span><br><span class="line">&gt; abi=<span class="string">"[&#123;...&#125;]"</span> <span class="comment">#abi数据</span></span><br><span class="line">&gt; myContract = eth.contract(abi)</span><br><span class="line">...</span><br><span class="line">&gt; contract = myContract.new(&#123;from:eth.accounts[0],data:code,gas:1000000&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">#节点3，挖矿</span></span><br><span class="line">&gt; miner.start(1)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2019/06/12/geth-privatechain/">以太坊私链搭建与配置</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">CapybaraJ</a></p>
+        <p><span>发布时间:</span>2019-06-12, 16:41:14</p>
+        <p><span>最后更新:</span>2019-07-13, 21:43:24</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2019/06/12/geth-privatechain/" title="以太坊私链搭建与配置">http://yoursite.com/2019/06/12/geth-privatechain/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2019/06/12/geth-privatechain/　　作者: CapybaraJ" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target="_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2019/06/11/gobase/">
+                    Go半小时入坑
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于环境"><span class="toc-number">1.</span> <span class="toc-text">关于环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#init"><span class="toc-number">2.</span> <span class="toc-text">init</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创世区块"><span class="toc-number">2.1.</span> <span class="toc-text">创世区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#私有链网络"><span class="toc-number">2.2.</span> <span class="toc-text">私有链网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-number">3.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#节点"><span class="toc-number">3.1.</span> <span class="toc-text">节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户"><span class="toc-number">3.2.</span> <span class="toc-text">账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#挖矿"><span class="toc-number">3.3.</span> <span class="toc-text">挖矿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块"><span class="toc-number">3.4.</span> <span class="toc-text">区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交易"><span class="toc-number">3.5.</span> <span class="toc-text">交易</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单位换算"><span class="toc-number">3.6.</span> <span class="toc-text">单位换算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#私有链环境"><span class="toc-number">4.</span> <span class="toc-text">私有链环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#要求"><span class="toc-number">4.1.</span> <span class="toc-text">要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三个节点"><span class="toc-number">4.2.</span> <span class="toc-text">三个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个智能合约发布"><span class="toc-number">4.3.</span> <span class="toc-text">一个智能合约发布</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录" title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"以太坊私链搭建与配置　| Capybara's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2019/06/11/gobase/" title="下一篇: Go半小时入坑">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2019/06/12/geth-privatechain/">以太坊私链搭建与配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/11/gobase/">Go半小时入坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/08/py-evm-guides-4/">py-evm之Guides翻译-创建操作码</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/py-evm-guides-2/">py-evm之Guides翻译-架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/py-evm-guides-3/">py-evm之Guides翻译-理解挖矿过程</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/py-evm-guides-1/">py-evm之Guides翻译-构建一个使用Py-EVM的应用程序</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/07/py-evm-guides/">py-evm之Guides目录翻译</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/writeBlog/">如何在hexo博客上创建文章</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/createBlog/">如何创建这个博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2019/06/05/py-evm-cookbook/">py-evm之cookbook翻译</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2019 CapybaraJ
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style="display:none">
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style="display:none">
+                        <span id="page-visit" title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
