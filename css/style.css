@@ -376,7 +376,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: url("images/haer.jpeg") center #888;
+  background: url("images/firefly.jpg") center #888;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -599,8 +599,8 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  background: rgba(253,254,255,0.9);
-  border: 1px solid #555;
+  background: rgba(240,240,240,0.22);
+  border: 1px solid rgba(240,240,240,0.4);
   display: block;
   list-style-type: none;
   position: absolute;
