@@ -5,15 +5,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
-  <title>Archives | Capybara&#39;s Blog</title>
+  <title>hexo博客搭建优化 | Capybara&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Capybara&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="hexo还是蛮多优化的，关于主题的优化就不说了，这里主要说下速度、加载、使用方法的东西">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo博客搭建优化">
+<meta property="og:url" content="http://yoursite.com/2019/09/17/hexo-update/index.html">
 <meta property="og:site_name" content="Capybara&#39;s Blog">
+<meta property="og:description" content="hexo还是蛮多优化的，关于主题的优化就不说了，这里主要说下速度、加载、使用方法的东西">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-17T11:45:26.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capybara&#39;s Blog">
+<meta name="twitter:title" content="hexo博客搭建优化">
+<meta name="twitter:description" content="hexo还是蛮多优化的，关于主题的优化就不说了，这里主要说下速度、加载、使用方法的东西">
   
     <link rel="alternative" href="/atom.xml" title="Capybara&#39;s Blog" type="application/atom+xml">
   
@@ -76,120 +81,84 @@
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/06/07/py-evm-guides-1/" class="archive-article-date">
-  <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">Jun 7</time>
+      <section id="main"><article id="post-hexo-update" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2019/09/17/hexo-update/" class="article-date">
+  <time datetime="2019-09-17T11:11:31.000Z" itemprop="datePublished">2019-09-17</time>
 </h3>
-      
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides-1/">py-evm之Guides翻译-构建一个使用Py-EVM的应用程序</a>
+    <h1 class="article-title" itemprop="name">
+      hexo博客搭建优化
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/06/07/py-evm-guides/" class="archive-article-date">
-  <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">Jun 7</time>
-</h3>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides/">py-evm之Guides目录翻译</a>
-    </h1>
-  
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于如何提速"><span class="toc-text">关于如何提速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#博客写作"><span class="toc-text">博客写作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#模板"><span class="toc-text">模板</span></a></li></ol></li></ol>
+          </div>
+        
+        <p>hexo还是蛮多优化的，关于主题的优化就不说了，这里主要说下速度、加载、使用方法的东西</p>
+<a id="more"></a>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/06/05/writeBlog/" class="archive-article-date">
-  <time datetime="2019-06-05T14:38:16.000Z" itemprop="datePublished">Jun 5</time>
-</h3>
+<h2 id="关于如何提速"><a href="#关于如何提速" class="headerlink" title="关于如何提速"></a>关于如何提速</h2><p>目前看到的是，压缩，图床，CDN</p>
+<p>法一：买域名+coding同时部署+域名解析分流</p>
+<p>法二：上图床，至少图片加载快一些</p>
+<p>法三：压缩，至少加载内容少一些</p>
+<p>我觉得法一最治本；但是目前来说我觉得比较经济简单的方法是</p>
+<ol>
+<li>压缩</li>
+<li>上图床：这个我觉得sm.ms比较好，但是图片上传之后要考虑以后图床关闭以及迁移，比如迁移到自己的服务器或者采用了法一，其实图床用处就不太大了，这里最好准备一下转换脚本</li>
+</ol>
+<p>这两个一上，我估计我的blog速度应该会快很多；当然其实还是推荐买个域名，毕竟，github域名真的不太友好，貌似屏蔽了baidu的spider</p>
+<h2 id="博客写作"><a href="#博客写作" class="headerlink" title="博客写作"></a>博客写作</h2><h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>模板在<code>./scaffolds</code>下，有post/draft/page三种</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new post <span class="string">"article_name"</span></span><br></pre></td></tr></table></figure>
+
+<p>### </p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/writeBlog/">如何在hexo博客上创建文章</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
-    </header>
+        <a data-url="http://yoursite.com/2019/09/17/hexo-update/" data-id="ck0uf7kp70006272oll6jabya" class="article-share-link">Share</a>
+        
+      </div>
+    </footer>
   </div>
-</article>
+  </div>
+  </div>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/06/05/createBlog/" class="archive-article-date">
-  <time datetime="2019-06-05T11:38:36.000Z" itemprop="datePublished">Jun 5</time>
-</h3>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/createBlog/">如何创建这个博客</a>
-    </h1>
   
+    <a href="/2019/09/16/php-no-agruments/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP 无参数函数执行</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/06/05/py-evm-cookbook/" class="archive-article-date">
-  <time datetime="2019-06-05T11:38:36.000Z" itemprop="datePublished">Jun 5</time>
-</h3>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/py-evm-cookbook/">py-evm之cookbook翻译</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
-  
+
 </section>
       
       <aside id="sidebar">

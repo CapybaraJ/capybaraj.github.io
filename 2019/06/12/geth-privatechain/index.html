@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Capybara&#39;s Blog">
 <meta property="og:description" content="参考资料：https://g2ex.github.io/2017/09/12/ethereum-guidance/ 这不是重复写，这是我的个人记录，很多操作参考了这篇文章与其他的，主要是为了给自己一条特别适合自己工作环境的私链。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-09-06T11:34:49.049Z">
+<meta property="og:updated_time" content="2019-09-22T03:14:58.617Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="以太坊私链搭建与配置">
 <meta name="twitter:description" content="参考资料：https://g2ex.github.io/2017/09/12/ethereum-guidance/ 这不是重复写，这是我的个人记录，很多操作参考了这篇文章与其他的，主要是为了给自己一条特别适合自己工作环境的私链。">
@@ -108,7 +108,7 @@
         
           <div id="toc" class="toc-article">
             <strong class="toc-title">Contents</strong>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于环境"><span class="toc-text">关于环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#init"><span class="toc-text">init</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创世区块"><span class="toc-text">创世区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#私有链网络"><span class="toc-text">私有链网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#节点"><span class="toc-text">节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户"><span class="toc-text">账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#挖矿"><span class="toc-text">挖矿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块"><span class="toc-text">区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交易"><span class="toc-text">交易</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单位换算"><span class="toc-text">单位换算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#私有链环境"><span class="toc-text">私有链环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#要求"><span class="toc-text">要求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三个节点"><span class="toc-text">三个节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一个智能合约发布"><span class="toc-text">一个智能合约发布</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于环境"><span class="toc-text">关于环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#init"><span class="toc-text">init</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创世区块"><span class="toc-text">创世区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#运行节点"><span class="toc-text">运行节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点网络"><span class="toc-text">节点网络</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#节点"><span class="toc-text">节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#账户"><span class="toc-text">账户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#挖矿"><span class="toc-text">挖矿</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#区块"><span class="toc-text">区块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交易"><span class="toc-text">交易</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单位换算"><span class="toc-text">单位换算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#智能合约发布"><span class="toc-text">智能合约发布</span></a></li></ol>
           </div>
         
         <p>参考资料：<a href="https://g2ex.github.io/2017/09/12/ethereum-guidance/" target="_blank" rel="noopener">https://g2ex.github.io/2017/09/12/ethereum-guidance/</a></p>
@@ -120,10 +120,10 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"config"</span>: &#123;</span><br><span class="line">    "chainID": 452, //最好不要是1，1是以太坊主链的，不要混淆了吧</span><br><span class="line">    "homesteadBlock": 0,</span><br><span class="line">    "eip155Block": 0,</span><br><span class="line">    "eip158Block": 0</span><br><span class="line">  &#125;,</span><br><span class="line">  "alloc": &#123;&#125;, //可以初始化账户，但是觉得没必要</span><br><span class="line">  "coinbase": "0x0000000000000000000000000000000000000000", //默认收钱账户，就是默认矿工账户</span><br><span class="line">  "difficulty": "0x400", //区块挖掘难度</span><br><span class="line">  "extraData": "0x", //不能是0x0，会报错，就是0x，不是我写错了</span><br><span class="line">  "gasLimit": "0x2fefd8", //gas limit</span><br><span class="line">  "nonce": "0xdeadbeefdeadbeaf",</span><br><span class="line">  "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",</span><br><span class="line">  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",</span><br><span class="line">  "timestamp": "0x00"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>初始化命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">geth --datadir data0 init genesis.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggeth --datadir data0 init genesis.json</span><br></pre></td></tr></table></figure>
 
 <p>命令的主体是 <code>geth init</code>，表示初始化区块链，命令可以带有选项和参数，其中 <code>--datadir</code> 选项后面跟一个目录名，这里为 data0，表示指定数据存放目录为 data0，genesis.json 是 <code>init</code> 命令的参数。初始化完成data0里面就会有初始化数据</p>
-<h3 id="私有链网络"><a href="#私有链网络" class="headerlink" title="私有链网络"></a>私有链网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点1</span></span><br><span class="line">geth --identity <span class="string">"TestNode0"</span> --rpc --rpcport <span class="string">"8545"</span> --datadir data0 --port <span class="string">"30303"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点2</span></span><br><span class="line">geth --datadir data1 init gensis.json</span><br><span class="line">geth --identity <span class="string">"TestNode1"</span> --rpc --rpcport <span class="string">"8546"</span> --datadir data1 --port <span class="string">"30304"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点连接</span></span><br><span class="line"><span class="comment">#节点2</span></span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line"><span class="string">"enode://略去数据@127.0.0.1:23332?discport=0"</span></span><br><span class="line"><span class="comment">#节点1</span></span><br><span class="line">&gt; net.peerCount</span><br><span class="line">0</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:23332?discport=0"</span>)</span><br><span class="line">&gt; net.peerCount</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h3 id="运行节点"><a href="#运行节点" class="headerlink" title="运行节点"></a>运行节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点1</span></span><br><span class="line">geth --identity <span class="string">"TestNode0"</span> --rpc --rpcport <span class="string">"8545"</span> --datadir data0 --port <span class="string">"30303"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点2</span></span><br><span class="line">geth --datadir data1 init gensis.json</span><br><span class="line">geth --identity <span class="string">"TestNode1"</span> --rpc --rpcport <span class="string">"8546"</span> --datadir data1 --port <span class="string">"30304"</span> --nodiscover --allow-insecure-unlock console</span><br></pre></td></tr></table></figure>
 
 <p>上面命令的主体是 <code>geth console</code>，表示启动节点并进入交互式控制台。<br>各选项含义如下：</p>
 <ul>
@@ -142,12 +142,12 @@
 </blockquote>
 <p>一旦进入console了，这是一个交互式的 JavaScript 执行环境，在这里面可以执行 JavaScript 代码，其中 <code>&gt;</code> 是命令提示符。在这个环境里也内置了一些用来操作以太坊的 JavaScript 对象，可以直接使用这些对象。这些对象主要包括：</p>
 <ul>
-<li>eth：包含一些跟操作区块链相关的方法；</li>
-<li>net：包含一些查看p2p网络状态的方法；</li>
-<li>admin：包含一些与管理节点相关的方法；</li>
-<li>miner：包含启动&amp;停止挖矿的一些方法；</li>
-<li>personal：主要包含一些管理账户的方法；</li>
-<li>txpool：包含一些查看交易内存池的方法；</li>
+<li>eth：包含一些跟<strong>操作区块链</strong>相关的方法；</li>
+<li>net：包含一些查看<strong>p2p网络状态</strong>的方法；</li>
+<li>admin：包含一些与<strong>管理节点</strong>相关的方法；</li>
+<li>miner：包含启动&amp;停止<strong>挖矿</strong>的一些方法；</li>
+<li>personal：主要包含一些<strong>管理账户</strong>的方法；</li>
+<li>txpool：包含一些查看<strong>交易内存池</strong>的方法；</li>
 <li>web3：包含了以上对象，还包含一些单位换算的方法。</li>
 </ul>
 <p>常用命令有，后面希望有更详细的一些：</p>
@@ -167,6 +167,14 @@
 <li>admin.addPeer()：连接到其他节点；</li>
 </ul>
 <p>这些命令支持 <code>Tab</code> 键自动补全</p>
+<h3 id="节点网络"><a href="#节点网络" class="headerlink" title="节点网络"></a>节点网络</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点连接：启动后添加</span></span><br><span class="line"><span class="comment"># 节点1：获取节点1信息</span></span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line"><span class="string">"enode://略去数据@127.0.0.1:23332?discport=0"</span></span><br><span class="line"><span class="comment"># 节点2：查看节点2 peer数量</span></span><br><span class="line">&gt; net.peerCount</span><br><span class="line">0</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:23332?discport=0"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点2的peer增加</span></span><br><span class="line">&gt; net.peerCount</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点链接：启动前添加</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入节点目录下的geth文件夹</span></span><br><span class="line">&gt; <span class="built_in">cd</span> data0/geth</span><br><span class="line">&gt; gedit static-nodes.json <span class="comment"># 没有的话新建即可</span></span><br><span class="line">[</span><br><span class="line"><span class="string">"enode://xxxxx@[127.0.0.1]:30304"</span></span><br><span class="line">]</span><br><span class="line"><span class="comment"># 最后正常启动即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点连接：启动节点时添加</span></span><br><span class="line">&gt; geth --bootnodes enode://pubkey1@ip1:port1,enode://pubkey2@ip2:port2 --identity <span class="string">"TestNode0"</span> --rpc --rpcport <span class="string">"8545"</span> --datadir data0 --port <span class="string">"30303"</span> --nodiscover --allow-insecure-unlock console</span><br></pre></td></tr></table></figure>
+
+<p>如果出现admin.addPeer()返回true但是实际节点没有添加成功的例子，也即新增节点不生效，像这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; admin.addPeer(<span class="string">"enode://c4586276391b3c88ec23889d1bc825d0c7d69bd5765d4545686f835608068b8dc48799d2686a04ea0f9e17aed099bf9b56935679fa6493e9b17151624a320714@172.16.0.17:30303"</span>)</span><br><span class="line"><span class="literal">true</span></span><br><span class="line">&gt; admin.peers</span><br><span class="line">[]</span><br></pre></td></tr></table></figure>
+
+<p>查看节点全信息，查找原因</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&gt; admin.nodeInfo</span><br><span class="line">&#123;</span><br><span class="line">	...</span><br><span class="line">  ip: <span class="string">"::"</span>, <span class="comment">#这个ip应该不能是『::』如果是这个，在启动节点的时候去掉 --nodiscover选项</span></span><br><span class="line">  listenAddr: <span class="string">"[::]:30306"</span>,</span><br><span class="line">  name: <span class="string">"Geth/TestNode1/v1.9.0-unstable/darwin-amd64/go1.12.5"</span>,</span><br><span class="line">  ports: &#123;</span><br><span class="line">    discovery: 0,</span><br><span class="line">    listener: 30306</span><br><span class="line">  &#125;,</span><br><span class="line">  protocols: &#123;</span><br><span class="line">    eth: &#123;</span><br><span class="line">      config: &#123;</span><br><span class="line">        chainId: xxx,  <span class="comment"># 这个值要一致，如果不一致是无法添加成功的</span></span><br><span class="line">        ...</span><br><span class="line">        homesteadBlock: 0</span><br><span class="line">      &#125;,</span><br><span class="line">      difficulty: 1575808,</span><br><span class="line">      genesis: <span class="string">"0x62adc01b295219d7a4e1dade7648bf622f04e2b74aaaea3edfa3ad187ef59eed"</span>,</span><br><span class="line">      head: <span class="string">"0x43dc6aad82f2f7c208034ee103471e27a14c59e1cf07c2f124d345a377198c3c"</span>,</span><br><span class="line">      network: 1</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><blockquote>
 <p>admin.addPeer()</p>
 </blockquote>
@@ -183,6 +191,18 @@
 <p>net.peerCount</p>
 </blockquote>
 <p>可以查看已连接到的节点数量。</p>
+<blockquote>
+<p>eth.syncing</p>
+</blockquote>
+<p>节点同步；当CurrentBlock大于等于HighestBlock时会返回<strong>false</strong>，也就是同步完成之后，再执行eth.syncing()函数会返回false。</p>
+<p>如果同步没完成，则显示以下字段：</p>
+<ul>
+<li>startingBlock：开始同步的起始区块编号；</li>
+<li>currentBlock：当前正在导入的区块编号；</li>
+<li>highestBlock：通过所链接的节点获得的当前最高的区块高度；</li>
+<li>pulledStates：当前已经拉取的状态条目数；</li>
+<li>knownStates：当前已知的待拉取的总状态条目数；</li>
+</ul>
 <h3 id="账户"><a href="#账户" class="headerlink" title="账户"></a>账户</h3><blockquote>
 <p>personal.newAccount()</p>
 </blockquote>
@@ -238,10 +258,7 @@
 <h3 id="单位换算"><a href="#单位换算" class="headerlink" title="单位换算"></a>单位换算</h3><blockquote>
 <p>web3.toWei(5,’ether’)</p>
 </blockquote>
-<h2 id="私有链环境"><a href="#私有链环境" class="headerlink" title="私有链环境"></a>私有链环境</h2><h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><p>三个节点，两个节点交互，一个挖矿，发布一个智能合约，并可以调用</p>
-<h3 id="三个节点"><a href="#三个节点" class="headerlink" title="三个节点"></a>三个节点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点1</span></span><br><span class="line">geth --identity <span class="string">"TestNode0"</span> --rpc --rpcport <span class="string">"8545"</span> --datadir d0 --port <span class="string">"30303"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line">&gt; personal.newAccount()</span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line"><span class="comment"># 节点2、3创建后执行</span></span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30304?discport=0"</span>)</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30305?discport=0"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点2</span></span><br><span class="line">geth --identity <span class="string">"TestNode1"</span> --rpc --rpcport <span class="string">"8546"</span> --datadir d1 --port <span class="string">"23332"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line">&gt; personal.newAccount()</span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30303?discport=0"</span>)</span><br><span class="line"><span class="comment"># 节点3创建后</span></span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:23333?discport=0"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 节点3</span></span><br><span class="line">geth --identity <span class="string">"TestNode2"</span> --rpc --rpcport <span class="string">"8547"</span> --datadir d2 --port <span class="string">"30305"</span> --nodiscover --allow-insecure-unlock console</span><br><span class="line"></span><br><span class="line">&gt; personal.newAccount()</span><br><span class="line">&gt; admin.nodeInfo.enode</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30303?discport=0"</span>)</span><br><span class="line">&gt; admin.addPeer(<span class="string">"enode://略去数据@127.0.0.1:30304?discport=0"</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="一个智能合约发布"><a href="#一个智能合约发布" class="headerlink" title="一个智能合约发布"></a>一个智能合约发布</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点1</span></span><br><span class="line">&gt; personal.unlockAccount(eth.account[0])</span><br><span class="line"></span><br><span class="line">&gt; code=<span class="string">"0x---"</span> <span class="comment">#bin数据</span></span><br><span class="line">&gt; abi=<span class="string">"[&#123;...&#125;]"</span> <span class="comment">#abi数据</span></span><br><span class="line">&gt; myContract = eth.contract(abi)</span><br><span class="line">...</span><br><span class="line">&gt; contract = myContract.new(&#123;from:eth.accounts[0],data:code,gas:1000000&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">#节点3，挖矿</span></span><br><span class="line">&gt; miner.start(1)</span><br></pre></td></tr></table></figure>
+<h2 id="智能合约发布"><a href="#智能合约发布" class="headerlink" title="智能合约发布"></a>智能合约发布</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 节点1</span></span><br><span class="line">&gt; personal.unlockAccount(eth.account[0])</span><br><span class="line"></span><br><span class="line">&gt; code=<span class="string">"0x---"</span> <span class="comment">#bin数据</span></span><br><span class="line">&gt; abi=<span class="string">"[&#123;...&#125;]"</span> <span class="comment">#abi数据</span></span><br><span class="line">&gt; myContract = eth.contract(abi)</span><br><span class="line">...</span><br><span class="line">&gt; contract = myContract.new(&#123;from:eth.accounts[0],data:code,gas:1000000&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">#节点3，挖矿</span></span><br><span class="line">&gt; miner.start(1)</span><br></pre></td></tr></table></figure>
 
 
       
@@ -251,7 +268,7 @@
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ethereum/">ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/geth/">geth</a></li></ul>
 
-        <a data-url="http://yoursite.com/2019/06/12/geth-privatechain/" data-id="ck081nh240004ii2ov5cruxrv" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/06/12/geth-privatechain/" data-id="ck0uf7kp30003272onajdq4ht" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -294,23 +311,23 @@
       <ul>
         
           <li>
+            <a href="/2019/09/17/hexo-update/">hexo博客搭建优化</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/16/php-no-agruments/">PHP 无参数函数执行</a>
+          </li>
+        
+          <li>
+            <a href="/2019/09/16/vmware/">vmware</a>
+          </li>
+        
+          <li>
             <a href="/2019/09/06/hexo_themes/">hexo主题推荐</a>
           </li>
         
           <li>
             <a href="/2019/09/06/changepaperbox1/">paperbox主题改造</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/12/geth-privatechain/">以太坊私链搭建与配置</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/11/gobase/">Go半小时入坑</a>
-          </li>
-        
-          <li>
-            <a href="/2019/06/08/py-evm-guides-4/">py-evm之Guides翻译-创建操作码</a>
           </li>
         
       </ul>
@@ -322,7 +339,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethereum/">ethereum</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geth/">geth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go-ethereum/">go-ethereum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/py-evm/">py-evm</a><span class="tag-list-count">6</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ctf/">ctf</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ethereum/">ethereum</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/geth/">geth</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/">go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/go-ethereum/">go-ethereum</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/py-evm/">py-evm</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/">web</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -331,7 +348,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">10</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a><span class="archive-list-count">10</span></li></ul>
     </div>
   </div>
 
@@ -340,7 +357,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ethereum/" style="font-size: 20px;">ethereum</a> <a href="/tags/geth/" style="font-size: 10px;">geth</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-ethereum/" style="font-size: 10px;">go-ethereum</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/py-evm/" style="font-size: 17.5px;">py-evm</a>
+      <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/ethereum/" style="font-size: 20px;">ethereum</a> <a href="/tags/geth/" style="font-size: 10px;">geth</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/go/" style="font-size: 10px;">go</a> <a href="/tags/go-ethereum/" style="font-size: 10px;">go-ethereum</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/py-evm/" style="font-size: 17.5px;">py-evm</a> <a href="/tags/web/" style="font-size: 10px;">web</a>
     </div>
   </div>
 
