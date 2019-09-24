@@ -5,15 +5,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
-  <title>Archives: 2019 | Capybara&#39;s Blog</title>
+  <title>sm.ms图床测试及脚本测试 | Capybara&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Capybara&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2019/index.html">
+  <meta name="description" content="这是一个demo实例；自己写了一个sm.ms图床和typora的上传">
+<meta name="keywords" content="hexo,markdown,图床">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sm.ms图床测试及脚本测试">
+<meta property="og:url" content="http://yoursite.com/2019/09/24/sm-ms/index.html">
 <meta property="og:site_name" content="Capybara&#39;s Blog">
+<meta property="og:description" content="这是一个demo实例；自己写了一个sm.ms图床和typora的上传">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/5prJKd4LUA8XjsR.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/seqS4O7og8nUHMK.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/7lrj6SfKGpd8F1T.png">
+<meta property="og:image" content="https://avatar-static.segmentfault.com/231/346/2313469346-56d936a3aa49f_huge256">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/dTjNFK7fbnBPhZX.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/uFRjEn59MDahP7K.png">
+<meta property="og:image" content="https://i.loli.net/2019/09/24/6mowuGXqTUEarcJ.png">
+<meta property="og:updated_time" content="2019-09-24T05:21:22.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capybara&#39;s Blog">
+<meta name="twitter:title" content="sm.ms图床测试及脚本测试">
+<meta name="twitter:description" content="这是一个demo实例；自己写了一个sm.ms图床和typora的上传">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/24/5prJKd4LUA8XjsR.png">
   
     <link rel="alternative" href="/atom.xml" title="Capybara&#39;s Blog" type="application/atom+xml">
   
@@ -76,215 +89,105 @@
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/09/24/sm-ms/" class="archive-article-date">
-  <time datetime="2019-09-24T04:52:58.000Z" itemprop="datePublished">Sep 24</time>
+      <section id="main"><article id="post-sm-ms" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/2019/09/24/sm-ms/" class="article-date">
+  <time datetime="2019-09-24T04:52:58.000Z" itemprop="datePublished">2019-09-24</time>
 </h3>
-      
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/24/sm-ms/">sm.ms图床测试及脚本测试</a>
+    <h1 class="article-title" itemprop="name">
+      sm.ms图床测试及脚本测试
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/09/17/hexo-update/" class="archive-article-date">
-  <time datetime="2019-09-17T11:11:31.000Z" itemprop="datePublished">Sep 17</time>
-</h3>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/17/hexo-update/">hexo博客搭建优化</a>
-    </h1>
-  
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础测试"><span class="toc-text">基础测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误测试"><span class="toc-text">错误测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果表"><span class="toc-text">结果表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#后续添加"><span class="toc-text">后续添加</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#错误处理"><span class="toc-text">错误处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#参数处理"><span class="toc-text">参数处理</span></a></li></ol></li></ol>
+          </div>
+        
+        <p>这是一个demo实例；自己写了一个sm.ms图床和typora的上传</p>
+<a id="more"></a>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/09/16/php-no-agruments/" class="archive-article-date">
-  <time datetime="2019-09-16T03:04:36.000Z" itemprop="datePublished">Sep 16</time>
-</h3>
+<p>其实ipic和很多sm.ms插件都可以，写这个主要是为了完美适配自己的需求吧，我的需求如下</p>
+<ol>
+<li><p>typora不单是写博客用，平时也经常用到，不想默认上传；</p>
+</li>
+<li><p>sm.ms图床的信息其实不太好收集，所以希望留下上传记录，包括hash和对应关系，方便删除</p>
+</li>
+<li><p>写的特别好的目前还没看到，就是包括操作，安装在内都比较漂亮的；我也在等待~</p>
+</li>
+</ol>
+<h2 id="基础测试"><a href="#基础测试" class="headerlink" title="基础测试"></a>基础测试</h2><p>图片1：<code>&lt;img</code> 标签</p>
+<img src="https://i.loli.net/2019/09/24/5prJKd4LUA8XjsR.png" alt="image-20190924125401753" style="zoom:50%;">
+
+<p>我用了很多用例，来测试我的程序稳定性</p>
+<p>图片2：<code>&lt;img src = &#39;&#39;类型</code></p>
+<img src="https://i.loli.net/2019/09/24/seqS4O7og8nUHMK.png" alt="image-20190924125505620" style="zoom:50%;">
+
+<p>图片3：常见类型</p>
+<p><img src="https://i.loli.net/2019/09/24/7lrj6SfKGpd8F1T.png" alt="摩天大厦"></p>
+<p>图片4：网络图片类型</p>
+<p><img src="https://avatar-static.segmentfault.com/231/346/2313469346-56d936a3aa49f_huge256" alt="头像"></p>
+<h2 id="错误测试"><a href="#错误测试" class="headerlink" title="错误测试"></a>错误测试</h2><p>测试1：在代码中的应该被忽略，但是如果和使用的图片同名这个我就很尴尬，没处理好233333</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![头像](https://avatar-static.segmentfault.com/231/346/2313469346-56d936a3aa49f_huge256)</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">'xxxxx.jpg'</span> <span class="attr">alt</span>=<span class="string">"images"</span> <span class="attr">style</span>=<span class="string">"zoom:50%;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>并且对于<code>&lt;img src=&quot;xxxx&quot; /&gt;</code>这个没有处理好23333；考虑到\\`xxxx`这种情况还是蛮复杂的</p>
+<p>你看它会解析到，但是由于找不到文件所以也没什么太大问题吧</p>
+<p><img src="https://i.loli.net/2019/09/24/dTjNFK7fbnBPhZX.png" alt="image-20190924131707140"></p>
+<h2 id="结果表"><a href="#结果表" class="headerlink" title="结果表"></a>结果表</h2><p>一行一行算</p>
+<img src="https://i.loli.net/2019/09/24/uFRjEn59MDahP7K.png" alt="image-20190924131305167" style="zoom:100%;">
+
+<p>单行数据表现如下；status表示已经在文档中处理完成了所有替换；</p>
+<p><img src="https://i.loli.net/2019/09/24/6mowuGXqTUEarcJ.png" alt="单行数据示例"></p>
+<h2 id="后续添加"><a href="#后续添加" class="headerlink" title="后续添加"></a>后续添加</h2><h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>关于key error导致程序运行截止</p>
+<h3 id="参数处理"><a href="#参数处理" class="headerlink" title="参数处理"></a>参数处理</h3><p>关于如何更新token，更新recordFile</p>
+<p>关于如何形式化参数</p>
+<p>END</p>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/16/php-no-agruments/">PHP 无参数函数执行</a>
-    </h1>
-  
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图床/">图床</a></li></ul>
 
-    </header>
+        <a data-url="http://yoursite.com/2019/09/24/sm-ms/" data-id="ck0xe7nab001hl92oh7qoa553" class="article-share-link">Share</a>
+        
+      </div>
+    </footer>
   </div>
-</article>
+  </div>
+  </div>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/09/16/vmware/" class="archive-article-date">
-  <time datetime="2019-09-16T02:42:34.000Z" itemprop="datePublished">Sep 16</time>
-</h3>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/16/vmware/">vmware</a>
-    </h1>
   
+    <a href="/2019/09/17/hexo-update/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo博客搭建优化</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/09/06/hexo_themes/" class="archive-article-date">
-  <time datetime="2019-09-06T11:25:28.000Z" itemprop="datePublished">Sep 6</time>
-</h3>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/06/hexo_themes/">hexo主题推荐</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/09/06/changepaperbox1/" class="archive-article-date">
-  <time datetime="2019-09-06T10:40:28.000Z" itemprop="datePublished">Sep 6</time>
-</h3>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/06/changepaperbox1/">paperbox主题改造</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/09/06/changepaperbox1的副本/" class="archive-article-date">
-  <time datetime="2019-09-06T10:40:28.000Z" itemprop="datePublished">Sep 6</time>
-</h3>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/06/changepaperbox1的副本/">paperbox主题改造</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/06/12/geth-privatechain/" class="archive-article-date">
-  <time datetime="2019-06-12T08:41:14.000Z" itemprop="datePublished">Jun 12</time>
-</h3>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/12/geth-privatechain/">以太坊私链搭建与配置</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/06/11/gobase/" class="archive-article-date">
-  <time datetime="2019-06-11T07:38:57.000Z" itemprop="datePublished">Jun 11</time>
-</h3>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/11/gobase/">Go半小时入坑</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <h3 href="/2019/06/08/py-evm-guides-4/" class="archive-article-date">
-  <time datetime="2019-06-08T10:20:00.000Z" itemprop="datePublished">Jun 8</time>
-</h3>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/08/py-evm-guides-4/">py-evm之Guides翻译-创建操作码</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
-  
 </section>
       
       <aside id="sidebar">
