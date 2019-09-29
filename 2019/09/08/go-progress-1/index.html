@@ -5,15 +5,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
-  <title>Category: 翻译 | Capybara&#39;s Blog~</title>
+  <title>Go一小时深入 | Capybara&#39;s Blog~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Capybara&#39;s Blog~">
-<meta property="og:url" content="http://yoursite.com/categories/翻译/index.html">
+  <meta name="description" content="Go半小时入坑之后，感觉有些东西还是要更了解">
+<meta name="keywords" content="go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go一小时深入">
+<meta property="og:url" content="http://yoursite.com/2019/09/08/go-progress-1/index.html">
 <meta property="og:site_name" content="Capybara&#39;s Blog~">
+<meta property="og:description" content="Go半小时入坑之后，感觉有些东西还是要更了解">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-29T12:45:14.450Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capybara&#39;s Blog~">
+<meta name="twitter:title" content="Go一小时深入">
+<meta name="twitter:description" content="Go半小时入坑之后，感觉有些东西还是要更了解">
   
     <link rel="alternative" href="/atom.xml" title="Capybara&#39;s Blog~" type="application/atom+xml">
   
@@ -76,165 +81,105 @@
 </header>
 
     <div class="outer">
-      <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <!-- <h3 href="/2019/06/08/py-evm-guides-4/" class="archive-article-date">  -->
-  <!-- <time datetime="2019-06-08T10:20:00.000Z" itemprop="datePublished">Jun 8</time> -->
+      <section id="main"><article id="post-go-progress-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <!-- <h3 href="/2019/09/08/go-progress-1/" class="article-date">  -->
+  <!-- <time datetime="2019-09-08T08:07:02.000Z" itemprop="datePublished">2019-09-08</time> -->
 <!-- </h3>  -->
 
-  <h3 href="/2019/06/08/py-evm-guides-4/" class="archive-article-date">
-    <time datetime="2019-06-08T10:20:00.000Z" itemprop="datePublished">Jun 8</time>
+  <h3 href="/2019/09/08/go-progress-1/" class="article-date">
+    <time datetime="2019-09-08T08:07:02.000Z" itemprop="datePublished">2019-09-08</time>
   </h3>
   
-      
+    
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/08/py-evm-guides-4/">py-evm之Guides翻译-创建操作码</a>
+    <h1 class="article-title" itemprop="name">
+      Go一小时深入
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <!-- <h3 href="/2019/06/07/py-evm-guides-2/" class="archive-article-date">  -->
-  <!-- <time datetime="2019-06-07T09:58:00.000Z" itemprop="datePublished">Jun 7</time> -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+          <div id="toc" class="toc-article">
+            <strong class="toc-title">Contents</strong>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Go的理解"><span class="toc-text">Go的理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Go语言的类型系统"><span class="toc-text">Go语言的类型系统</span></a></li></ol></li></ol>
+          </div>
+        
+        <p>Go半小时入坑之后，感觉有些东西还是要更了解</p>
+<a id="more"></a>
+
+<h2 id="Go的理解"><a href="#Go的理解" class="headerlink" title="Go的理解"></a>Go的理解</h2><h3 id="Go语言的类型系统"><a href="#Go语言的类型系统" class="headerlink" title="Go语言的类型系统"></a>Go语言的类型系统</h3><p>Go使用<strong>组合</strong>设计模式；不同于java的继承，两者应该是这样的</p>
+<blockquote>
+<p>继承：车（驾驶员） &lt;– 客车（乘客）&lt;– 货车（货物）</p>
+</blockquote>
+<blockquote>
+<p>组合：货车（驾驶，载客，运货）</p>
+</blockquote>
+<p>除了Go本身的基础类型，用户定义类型，基本上就是包含一组带类型的字段，用来存储数据；</p>
+<p>Go的接口用于对行为建模，而不是对象，比如Java，定义了Users接口，必须要声明引用该接口还要实现接口的所有方法；比如用户login()/logout()/changepass()…</p>
+<p>而Go呢，Go就是，如果你实现了上述的方法，那就默认你这个类属于Users，也就是，可以存储在这个接口类型的实例中；而不需要声明引用了该接口；</p>
+<p>并且，Go的接口一般都倾向于设计为单一行为；下面就是Go的io.Reader接口</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Reader <span class="keyword">interface</span>&#123;</span><br><span class="line">  Read(p []<span class="keyword">type</span>) (n <span class="keyword">int</span> err error)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        <!-- <h3 href="/2019/09/08/go-progress-1/" class="article-updated">  -->
+  <!-- <time datetime="2019-09-08T08:07:02.000Z" itemprop="datePublished">2019-09-08</time> -->
 <!-- </h3>  -->
 
-  <h3 href="/2019/06/07/py-evm-guides-2/" class="archive-article-date">
-    <time datetime="2019-06-07T09:58:00.000Z" itemprop="datePublished">Jun 7</time>
-  </h3>
+    <h3 href="/2019/09/08/go-progress-1/" class="article-updated">
+      Updated&nbsp;:&nbsp;<time datetime="2019-09-29T12:45:14.450Z" itemprop="datePublished">2019-09-29</time>
+    </h3>
   
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides-2/">py-evm之Guides翻译-架构</a>
-    </h1>
-  
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/">go</a></li></ul>
 
-    </header>
+        <a data-url="http://yoursite.com/2019/09/08/go-progress-1/" data-id="ck14z9h8o0007pr2o1lcmemsi" class="article-share-link">Share</a>
+        
+      </div>
+    </footer>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <!-- <h3 href="/2019/06/07/py-evm-guides-3/" class="archive-article-date">  -->
-  <!-- <time datetime="2019-06-07T09:58:00.000Z" itemprop="datePublished">Jun 7</time> -->
-<!-- </h3>  -->
-
-  <h3 href="/2019/06/07/py-evm-guides-3/" class="archive-article-date">
-    <time datetime="2019-06-07T09:58:00.000Z" itemprop="datePublished">Jun 7</time>
-  </h3>
-  
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides-3/">py-evm之Guides翻译-理解挖矿过程</a>
-    </h1>
-  
-
-    </header>
   </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <!-- <h3 href="/2019/06/07/py-evm-guides-1/" class="archive-article-date">  -->
-  <!-- <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">Jun 7</time> -->
-<!-- </h3>  -->
-
-  <h3 href="/2019/06/07/py-evm-guides-1/" class="archive-article-date">
-    <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">Jun 7</time>
-  </h3>
-  
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides-1/">py-evm之Guides翻译-构建一个使用Py-EVM的应用程序</a>
-    </h1>
-  
-
-    </header>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/16/php-no-agruments/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PHP 无参数函数执行
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/06/hexo_themes/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo主题推荐</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <!-- <h3 href="/2019/06/07/py-evm-guides/" class="archive-article-date">  -->
-  <!-- <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">Jun 7</time> -->
-<!-- </h3>  -->
 
-  <h3 href="/2019/06/07/py-evm-guides/" class="archive-article-date">
-    <time datetime="2019-06-07T09:24:00.000Z" itemprop="datePublished">Jun 7</time>
-  </h3>
-  
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/07/py-evm-guides/">py-evm之Guides目录翻译</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <!-- <h3 href="/2019/06/05/py-evm-cookbook/" class="archive-article-date">  -->
-  <!-- <time datetime="2019-06-05T11:38:36.000Z" itemprop="datePublished">Jun 5</time> -->
-<!-- </h3>  -->
-
-  <h3 href="/2019/06/05/py-evm-cookbook/" class="archive-article-date">
-    <time datetime="2019-06-05T11:38:36.000Z" itemprop="datePublished">Jun 5</time>
-  </h3>
-  
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/06/05/py-evm-cookbook/">py-evm之cookbook翻译</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-  
 </section>
       
       <aside id="sidebar">
