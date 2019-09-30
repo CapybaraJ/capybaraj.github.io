@@ -453,11 +453,11 @@ body {
 }
 #blog-title {
   text-decoration: none;
-  color: #fff;
-  font-size: 2em;
+  color: #59a48f;
+  font-size: 2.66em;
   font-weight: bold;
-  font-family: 'Times New Roman';
-  line-height: 2em;
+  font-family: fantasy;
+  line-height: 2.66em;
   padding: 5px 10px;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.4), 0px 1px 10px rgba(0,0,0,0.1), 0px 6px 15px rgba(0,0,0,0.1);
 }
