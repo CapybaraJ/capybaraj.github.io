@@ -17,7 +17,9 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.loli.net/2019/09/29/HShucszXOdbjaCt.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/29/uN4aMLr3qknslUb.png">
-<meta property="og:updated_time" content="2019-09-29T12:36:29.193Z">
+<meta property="og:image" content="http://yoursite.com/2019/09/29/changepaperbox2/changepaperbox2.assets/image-20190930103718306.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/09/29/changepaperbox2/changepaperbox2.assets/image-20190930104700996.png">
+<meta property="og:updated_time" content="2019-09-30T02:54:49.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Paperbox主题改造2-更新时间和标签美化">
 <meta name="twitter:description" content="对我的paperbox（现在这个主题，landscape plus基础修改而来的，我引用了）做基于自己喜好的改造； Part2: 加入Updated时间和标签美化~">
@@ -56,7 +58,7 @@
     <div id="header-title">
       
         <h1 id="blog-title-wrap">
-          <a href="/" id="blog-title">Capybara&#39;s Blog</a>
+          <a href="/" id="blog-title">Capybara&#39;s Blog~</a>
         </h1>
       
     </div>
@@ -123,6 +125,42 @@
 <p>Part2: 加入Updated时间和标签美化~</p>
 <a id="more"></a>
 
+<p>主题图变化</p>
+<ul>
+<li>固定图片</li>
+<li>春夏秋冬；按时间变化 [暂时不考虑]</li>
+</ul>
+<p>cube优化</p>
+<ul>
+<li><p>cube改版！</p>
+</li>
+<li><p>cube不会自动滚动了</p>
+</li>
+</ul>
+<p>速度</p>
+<ul>
+<li>加速访问 [见hexo博客搭建优化，这个和paperbox没有关系，所以不放在这里写]</li>
+</ul>
+<p><strong>添加时间</strong></p>
+<ul>
+<li><strong>有个Update比较好~</strong></li>
+</ul>
+<p><strong>标签改一下</strong></p>
+<ul>
+<li><strong>太丑了；太小了</strong></li>
+</ul>
+<p>字体问题</p>
+<ul>
+<li>同上</li>
+</ul>
+<p>代码高亮</p>
+<ul>
+<li>感觉代码不是很好看，说不定就会改了</li>
+</ul>
+<p>search</p>
+<ul>
+<li>加上search框</li>
+</ul>
 <h2 id="添加更新时间"><a href="#添加更新时间" class="headerlink" title="添加更新时间"></a>添加更新时间</h2><p>原版没有更新时间，感觉很别扭呀，不知道这个博客更新过没，也不知道时效；很苦恼，网上一搜，都是next的主题的，还有一个基于landscape的，非常具有参考价值：<a href="http://howiefh.github.io/2014/04/20/hexo-optimize-and-my-theme-landscape-f/" target="_blank" rel="noopener">hexo优化及主题Landscape-F</a></p>
 <h3 id="修改layout页面模板"><a href="#修改layout页面模板" class="headerlink" title="修改layout页面模板"></a>修改layout页面模板</h3><p>根据我们上一篇的思路，应该是两个操作，layout模板——修改页面显示、获取时间</p>
 <p>每篇文章开头都有个时间，这个时间是在哪的呢：<code>layout/_partial/article.ejs</code></p>
@@ -151,7 +189,24 @@
 <p><img src="https://i.loli.net/2019/09/29/HShucszXOdbjaCt.png" alt="image-20190929201947361"></p>
 <img src="https://i.loli.net/2019/09/29/uN4aMLr3qknslUb.png" alt="image-20190929202024981" style="zoom:50%;">
 
-<h2 id="标签优化"><a href="#标签优化" class="headerlink" title="标签优化"></a>标签优化</h2><p>待更新~</p>
+<h2 id="标签优化"><a href="#标签优化" class="headerlink" title="标签优化"></a>标签优化</h2><p>原标签如上，我觉得不好看，所以我改成了酱晒的：</p>
+<p><img src="changepaperbox2.assets/image-20190930103718306.jpg" alt="标签美化后"></p>
+<p>超级简单的，首先，找到一个样例，然后copy:</p>
+<p>你看这个主题标签就很好看，<a href="http://moxfive.xyz/，但是一想到，介个吧，五颜六色的标签不适合我这个性冷淡的博客风格，所以只盗用前面的小标签符号我觉得就很不错啦" target="_blank" rel="noopener">http://moxfive.xyz/，但是一想到，介个吧，五颜六色的标签不适合我这个性冷淡的博客风格，所以只盗用前面的小标签符号我觉得就很不错啦</a></p>
+<p>修改<code>source/css/_partial/article.styl</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.article-tag-list-link</span><br><span class="line">  &amp;:before</span><br><span class="line">    <span class="comment">//内容是『f02b』</span></span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"\f02b"</span></span><br><span class="line">    <span class="comment">//font的family是fontAwesome</span></span><br><span class="line">    <span class="attribute">font-family</span>: font-icon</span><br><span class="line">    <span class="comment">//和后面字符的距离</span></span><br><span class="line">    <span class="attribute">padding-right</span>: <span class="number">2px</span>;</span><br></pre></td></tr></table></figure>
+
+<p><code>source/css/_variables.styl</code>里面定义了</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Fonts</span></span><br><span class="line"><span class="attribute">font</span>-sans = <span class="string">"Helvetica Neue"</span>, <span class="string">"Helvetica"</span>, <span class="string">"Hiragino Sans GB"</span>, <span class="string">"Microsoft YaHei"</span>, <span class="string">"Source Han Sans CN"</span>, <span class="string">"WenQuanYi Micro Hei"</span>, Arial, sans-serif</span><br><span class="line"><span class="attribute">font</span>-serif = <span class="string">"Droid Serif"</span>, Georgia, Serif</span><br><span class="line"><span class="attribute">font</span>-mono = <span class="string">"Source Code Pro"</span>, Consolas, Monaco, Menlo, Consolas, monospace</span><br><span class="line"><span class="attribute">font</span>-icon = FontAwesome</span><br><span class="line"><span class="attribute">font</span>-icon-path = <span class="string">"//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/fonts/fontawesome-webfont"</span></span><br><span class="line"><span class="attribute">font</span>-icon-version = <span class="string">"4.2.0"</span></span><br><span class="line"><span class="attribute">font-size</span> = <span class="number">14px</span></span><br><span class="line"><span class="attribute">line-height</span> = <span class="number">1.6em</span></span><br><span class="line"><span class="attribute">line-height</span>-title = <span class="number">1.1em</span></span><br></pre></td></tr></table></figure>
+
+<p>FontAwesome是啥呢，<a href="https://astronautweb.co/snippet/font-awesome/" target="_blank" rel="noopener">https://astronautweb.co/snippet/font-awesome/</a></p>
+<p>在里面，你可以找到很多很好用又很漂亮的小图标哦~</p>
+<p><img src="changepaperbox2.assets/image-20190930104700996.png" alt="FontAwesome部分图标"></p>
+<p>关于字体太小的问题</p>
+<p>这个因为他们都放在footer里面，所以修改footer的字体大小就阔以啦，我从0.85改到了0.9，微调</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// source/css/_partial/article.styl</span></span><br><span class="line">.article-footer-<span class="attribute">content</span></span><br><span class="line">  clearfix()</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.9em</span></span><br></pre></td></tr></table></figure>
+
+<p>至此，我的footer我就很满意啦~</p>
 <hr>
 <p>上一篇：<a href="../../../../2019/09/29/changepaperbox1">Paperbox主题改造1-主题背景与Cube</a></p>
 
@@ -164,13 +219,13 @@
 <!-- </h3>  -->
 
     <h3 href="/2019/09/29/changepaperbox2/" class="article-updated">
-      Updated&nbsp;:&nbsp;<time datetime="2019-09-29T12:36:29.193Z" itemprop="datePublished">2019-09-29</time>
+      Updated&nbsp;:&nbsp;<time datetime="2019-09-30T02:54:49.625Z" itemprop="datePublished">2019-09-30</time>
     </h3>
   
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
-        <a data-url="http://yoursite.com/2019/09/29/changepaperbox2/" data-id="ck14z9h8h0002pr2ohv2dxzzg" class="article-share-link">Share</a>
+        <a data-url="http://yoursite.com/2019/09/29/changepaperbox2/" data-id="ck15usrbn0008fv2o90mcehue" class="article-share-link">Share</a>
         
       </div>
     </footer>
@@ -290,6 +345,15 @@
 <!-- totop end -->
 
 <!-- swiftype search start -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','1hQDjjh-YKH5E9-N3KaS','2.0.0');
+</script>
 
 <!-- swiftype search end -->
 

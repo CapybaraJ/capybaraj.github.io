@@ -1008,7 +1008,7 @@ a.article-title:hover {
 }
 .article-footer-content {
   zoom: 1;
-  font-size: 0.85em;
+  font-size: 0.9em;
   line-height: 1.6em;
   border-top: 1px solid #aaa;
   padding: 1.6em 10px;
@@ -1038,7 +1038,9 @@ a.article-title:hover {
   margin-right: 10px;
 }
 .article-tag-list-link:before {
-  content: "#";
+  content: "\f02b";
+  font-family: FontAwesome;
+  padding-right: 2px;
 }
 .article-comment-link {
   float: right;
