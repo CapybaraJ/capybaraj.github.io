@@ -1525,6 +1525,9 @@ a.article-title:hover {
   padding: 0;
   border: none;
 }
+.article-entry .highlight {
+  font-size: 0.85em;
+}
 .article-entry .highlight pre {
   border: none;
   margin: 0;
