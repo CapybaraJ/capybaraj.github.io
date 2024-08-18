@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://fatheadrat.tk/posts/f8797f1a/</loc>
+    
+    <lastmod>2024-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatheadrat.tk/posts/f9345448/</loc>
+    
+    <lastmod>2024-08-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://fatheadrat.tk/posts/1a16733d/</loc>
     
     <lastmod>2024-05-19</lastmod>
@@ -359,6 +377,27 @@
   
   <url>
     <loc>https://fatheadrat.tk/tags/Hexo-Butterfly/</loc>
+    <lastmod>2024-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatheadrat.tk/tags/mac/</loc>
+    <lastmod>2024-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatheadrat.tk/tags/automator/</loc>
+    <lastmod>2024-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://fatheadrat.tk/tags/regex/</loc>
     <lastmod>2024-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
